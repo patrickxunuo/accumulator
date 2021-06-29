@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useState, useEffect} from 'react'
+import firebaseConfig from "./components/firebaseConfig";
+import CreateTask from "./components/CreateTask"
+import Home from "./components/Home"
+import firebase from 'firebase'
+import {BrowserRouter as Switch, Route, Link, useLocation} from "react-router-dom"
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <div className="App">
+            <Switch>
+                <Route exact path='/'>
+                    <CreateTask/>
+                </Route>
+                <Route path='/home/:appid'>
+                    <Home/>
+                </Route>
+            </Switch>
+        </div>
+    );
 }
 
 export default App;
